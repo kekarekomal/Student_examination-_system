@@ -1,0 +1,6 @@
+insert into school.student values('b', 'x',2,'abc', 1234, 'm');
+insert into school.student values('c', 'y',3,'ac', 1234, 'f');
+insert into school.student values('d', 'z',4,'bc', 1234, 'f');
+insert into school.student values('e', 'f',5'agc', 1234, 'm');
+
+com.mysql.jdbc.Driver

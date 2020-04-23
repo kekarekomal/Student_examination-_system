@@ -1,0 +1,125 @@
+create table subject( sub_code varchar(15),
+		            sub_name varchar(30),
+		            primary key(sub_code)
+		           );
+
+insert into subject VALUES (1, 'COMPUTER NETWORKS');
+insert into subject VALUES (2, 'DATABASE MANAGEMENT SYSTEM');
+insert into subject VALUES (3, 'C PROGRAM');
+insert into subject VALUES (4, 'DATA STRUCTURES');
+
+create table student1(          usn varchar(10),
+		            name varchar(20),
+		            password varchar(7),
+		            phno int,
+		            address varchar(100),
+		            gender varchar(7),
+		            primary key(usn)
+		         );
+
+insert into student values('2kl16cs002','sonu','hindwadi , belgaum','123',date '2015-10-01',1547935648,'female'); 
+
+create table admin(admin_name varchar(14),
+		         password varchar(15)
+	                          );
+
+insert into admin values('komal', 'komal');
+insert into admin values('manali', 'manali');
+
+create table faculty_details( name varchar(50),
+		            	       facultyid varchar(15),
+		           	       sub_code varchar(20),
+		            	      sub_name varchar(75),
+			      primary key(facultyid)		 
+	                   	            );
+
+insert into exam.faculty_details VALUES ('komal','100','f1', 'DATA STRUCTURES');
+
+
+create table question(sub_code varchar(15),
+		               que varchar (200),
+		               op1 varchar(200),
+		               op2 varchar(200),
+		               op3 varchar(200),
+	 	               op4 varchar(200),
+ 		               corr_opt varchar(200),
+		               primary key(sub_code,que)
+		            );
+
+create table result( sub_code varchar(15),
+		         usn varchar(10),
+		         marks int,
+		         foreign key(sub_code) references subject(sub_code),
+		         foreign key(usn) references student(usn)
+		            );
+
+
+
+CREATE OR REPLACE TRIGGER stdcount
+AFTER insert on student
+FOR EACH ROW
+BEGIN
+       update studentcount set count=count+1;
+END;
+/
+
+create or replace trigger stdcnt
+after insert on student1
+begin
+update studentcount set count=count+1;
+END;
+/
+
+create or replace trigger sincr
+after insert on result
+begin
+update stdincr set incr=incr+1;
+END;
+/
+ 
+CREATE or replace PROCEDURE insertrow  
+is
+BEGIN
+insert into student1 values("USER","NAME","PASSWORD","PHNO","ADDRESS","GENDER");
+commit;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insertrow (
+p_usn IN student1.usn%TYPE,
+p_name IN student1.name%TYPE,
+p_password IN student1.password%TYPE,
+p_phno IN student1.phno%TYPE,
+p_address IN student1.address%TYPE,
+p_gender IN student.gender%TYPE)
+IS
+BEGIN
+INSERT INTO STUDENT1 VALUES (p_usn,p_name,p_password,p_phno,p_address,p_gender);
+COMMIT;
+END;
+/
+
+insert into question VALUES('1', 'which of the following is the protocol of transport layer', 'HDLC', 'TCP', 'TELNET', 'SMTP', 'TCP');
+insert into question VALUES('1', 'how may bits is required for IPv6', '32', '64', '128', '256', '128');
+insert into question VALUES('1', 'how may bits is required for IPv4', '32', '64', '128', '256', '32');
+insert into question VALUES('1', 'Which of the following is true with respect to TCP','Connection-oriented',' Process-to-process','Transport layer protocol','All of the mentioned','All of the mentioned');
+insert into question VALUES('1', 'In TCP, sending and receiving data is done as?',' Stream of bytes','Sequence of characters','Lines of data',' Packets','Stream of bytes');
+insert into question VALUES('1', 'TCP process may not write and read data at the same speed. So we need __________ for storage.',' Packets','Buffers','Segments',' Stacks','Buffers');
+insert into question VALUES('1', 'Which of these is not a application layer protocol?',' HTTP','SMTP','FTP','TCP');
+insert into question VALUES('1', 'The packet of information at the application layer is called','packet','Message','Segment','Frame','Message');
+insert into question VALUES('1', 'If a computer in a network accesses resources that are shared by other computers it is called?','server','client','receiver','sender','client');
+insert into question VALUES('1', 'In computer network, short message that travels around communication medium is called?','ring','star','mesh','token','token');
+insert into question VALUES('1', 'Network topology in which you connect each node to network along a single piece of network cable is called?','bus topology','ring topology','star topology','mesh topology',bus topology');
+insert into question VALUES('1', 'In computer network, bus, star, ring, mesh and tree are types of?','network','topology','software','hardware','topology');
+insert into question VALUES('1', ' Layer of computer OSI model which is concerned with addressing and routing is called?','network','data link','physical','transport','network');
+insert into question VALUES('1', 'Interconnection which is present between two or more computers so that they can communicate with each other is called?','network','sharing',link','LAN','network');
+insert into question VALUES('1', 'In computer, FTP stands for','file transfer protocol','finding tele path','finish tele program','file transfer process','file transfer protocol');
+insert into question VALUES('1', 'Network in which every computer is capable of playing role of client, server or both at same time is called','peer-to-peer network','local area network','dedicated server network','wide area network','peer to peer network');
+insert into question VALUES('1', 'In computer, two dissimilar networks can be connected by a','gateway','bridge','bus','ring','bridge');
+insert into question VALUES('1','Computer network that spans a limited physical area, usually ranging from a small office to a building is known as','LAN','WAN','MAN','PAN','LAN');
+insert into question VALUES('1', 'In computer, FTP facility is used to','transfer protocol','transfer file','connect to internet','check PC','transfer file');
+
+insert into question values('4','Which method can find if two vertices x & y have path between them?',' DFS',' BFS',' Both A & B',' None A or B',' Both A & B');
+insert into question values('4','Which one of the following is an application of Stack Data Structure?','Managing function calls','The stock span problem','Arithmetic expression evaluation','All of the above','Arithmetic expression evaluation');
+insert into question values('4','The following postfix expression with single digit operands is evaluated using a stack  8 2 3 ^ / 2 3 * + 5 1 * - ','6, 1','5, 7','3, 2','1, 5','6, 1');
+ 

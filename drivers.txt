@@ -1,0 +1,7 @@
+ORACLE
+DRIVER:
+URL:"jdbc:oracle:thin:@localhost:1521:xe","conn as sysdba","root"
+
+MYSQL
+DRIVER:com.mysql.jdbc.Driver
+URL:jdbc:mysql://localhost:3306/school","system","root

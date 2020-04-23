@@ -1,0 +1,50 @@
+create or replace trigger stdcount 
+after insert on student
+begin
+update exam.studentcount set count=count+1;
+end;
+
+create trigger stdcount
+after insert on exam.student
+begin
+update exam.studentcount set count=count+1
+end;
+
+
+create trigger stdcount
+before insert on student
+update studentcount set count =count +1;
+
+
+CREATE TRIGGER t1 
+AFTER INSERT 
+ON student
+BEGIN
+UPDATE exam.studentcount SET count = count + 1;
+end;
+
+CREATE TRIGGER std_count after INSERT ON exam.student
+begin
+insert into exam.studentcount value(1);
+end;
+
+delimiter //
+ CREATE TRIGGER res_check 
+after insert ON exam.result
+FOR EACH ROW
+BEGIN
+IF marks < 0 THEN
+set   performance = 0;
+ELSEIF marks > 100 THEN
+SET performance =100;
+END IF;
+END; //
+mysql> delimiter ;
+
+
+create trigger exam.t1 after insert on student
+begin
+update studentcount set count=count+1;
+end if;
+end
+//
