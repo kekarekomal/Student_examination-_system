@@ -9,4 +9,5 @@ Faculty
 Results
 
 HEre are the images of those modules
-![](New_folder/)
+
+<img src="NEw_folder/p1.jpeg">
